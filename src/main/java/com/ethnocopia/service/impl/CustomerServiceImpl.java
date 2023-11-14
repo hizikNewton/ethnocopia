@@ -50,12 +50,18 @@ public class CustomerServiceImpl  implements CustomerService {
         }
 
         @Override
-        public CustomerDto updateCustomer(int id) {
+        public CustomerDto updateCustomer(int id,CustomerDto customerDto) {
                 Optional<Customer> customer = customerRepository.findById(id);
                 customer.ifPresent(currentCustomer->{
-                        //currentCustomer.s
+                        currentCustomer.setAge(customerDto.getAge());
+                        currentCustomer.setEmail(customerDto.getEmail());
+                        currentCustomer.setName(customerDto.getName());
+                        currentCustomer.setId(customerDto.getId());
+
                 });
-                return null;
+                CustomerDto returnValue = new CustomerDto();
+                BeanUtils.copyProperties(customer,returnValue);
+                return  returnValue;
         }
 
 }

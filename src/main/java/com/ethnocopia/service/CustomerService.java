@@ -7,5 +7,5 @@ public interface CustomerService {
          List<CustomerDto> getCustomers(int page, int limit);
          void deleteCustomerById(int id);
 
-         CustomerDto updateCustomer(int id);
+         CustomerDto updateCustomer(int id,CustomerDto customer);
 }

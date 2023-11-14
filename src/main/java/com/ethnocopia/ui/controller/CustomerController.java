@@ -48,19 +48,14 @@ public class CustomerController {
                 return "customer with id "+id.toString()+" successfully deleted";
         }
 
-       /* @PutMapping("{customerId}")
-        public void updateCustomer(@PathVariable("customerId") Integer id, @RequestBody NewCustomerRequest request) {
-                customerService.updateCustomer(Integer id);
-                Optional<Customer> customerWrapper = customerRepository.findById(id);
-                if (!customerWrapper.isPresent())
-                        return;
+        @PutMapping("{customerId}")
+        public CustomerRest updateCustomer(@PathVariable("customerId") Integer id, @RequestBody NewCustomerRequest request) {
+               CustomerDto customerDto = new CustomerDto();
+               BeanUtils.copyProperties(request,customerDto);
+               CustomerDto updatedCustomer =  customerService.updateCustomer(id,customerDto);
+               CustomerRest returnValue = new CustomerRest(updatedCustomer);
+               return returnValue;
 
-                Customer customer = customerWrapper.get();
-                customer.setName(request.name);
-                customer.setAge(request.age);
-                customer.setEmail(request.email);
-
-                customerRepository.save(customer);
-        }*/
+        }
 }
 
