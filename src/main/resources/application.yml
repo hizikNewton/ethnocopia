@@ -4,15 +4,14 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost/customer
-    username: dbuser
-    password: password
+    username: ire
+    password: bamidele
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-    show-sql: true
   main:
     web-application-type: servlet

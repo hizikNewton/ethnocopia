@@ -1,10 +1,12 @@
-package com.ethnocopia;
+package com.ethnocopia.io.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
-@Entity
-public class Customer {
+@Entity(name="customer")
+public class Customer  implements Serializable {
+
     @Id
     @SequenceGenerator(
             name = "customer_id_seq",
